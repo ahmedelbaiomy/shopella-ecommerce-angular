@@ -1,0 +1,71 @@
+:host::ng-deep {
+  .secondary-nav {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    padding: 8px 22px;
+    a {
+      color: white;
+    }
+    .close {
+      cursor: pointer;
+    }
+  }
+  .navbar {
+    color: #000;
+    background-color: white !important;
+    font-family: 'satoshi';
+    font-size: 16px;
+    padding: 12px;
+    .searchInput {
+      position: relative;
+      input[type="search"] {
+        border-radius: 25px;
+        padding: 12px 40px;
+        width: 380px;
+        background-color: #f0f0f0;
+        &::placeholder {
+          text-align: start;
+          color: #c1c1c1;
+          font-family: "satoshi";
+        }
+      }
+      .search-container {
+        i {
+          color: #c1c1c1;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 3%;
+        }
+      }
+    }
+    .navbar-brand {
+      font-family:"fredoka", monospace;
+      font-size: 2em;
+      font-weight: 700;
+    }
+
+
+  }
+  // Media query for medium screens
+  @media (max-width: 992px) {
+    .navbar .searchInput input[type="search"] {
+      width: 280px;
+    }
+  }
+
+  // Media query for small screens
+  @media (max-width: 768px) {
+    .navbar .searchInput input[type="search"] {
+      width: 200px;
+    }
+  }
+
+  // Media query for extra small screens
+  @media (max-width: 576px) {
+    .navbar .searchInput input[type="search"] {
+      width: 100%;
+    }
+  }
+}

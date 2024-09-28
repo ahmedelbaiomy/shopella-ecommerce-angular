@@ -8,3 +8,15 @@
 body{
   font-family: "satoshi" !important;
 }
+
+:root{
+  --primary-color: #000 !important;
+}
+.button-submit{
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 12px;
+  cursor: pointer;
+}

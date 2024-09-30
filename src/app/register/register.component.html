@@ -3,7 +3,7 @@
   <form (ngSubmit)="onSubmit(registerForm)" [formGroup]="registerForm">
 
       <label for="name">Name</label>
-      <input type="text" id="name" class="form-control mb-2" placeholder="name" formControlName="name"/>
+      <input type="text" id="name" class="form-control mb-3" placeholder="name" formControlName="name"/>
       <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.errors">
         <small class="text-danger" *ngIf="registerForm.get('name')?.getError('required')">field required</small>
         <small class="text-danger" *ngIf="registerForm.get('name')?.getError('minlength')">minimum Length is 3 letters</small>
@@ -11,34 +11,37 @@
       </div>
 
       <label for="email">Email</label>
-      <input type="email" id="email" class="form-control mb-2" placeholder="example@gmail.com" formControlName="email"/>
+      <input type="email" id="email" class="form-control mb-3" placeholder="example@gmail.com" formControlName="email"/>
       <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors">
         <small class="text-danger" *ngIf="registerForm.get('email')?.getError('required')">field required</small>
         <small class="text-danger" *ngIf="registerForm.get('email')?.getError('email')">Invalid email</small>
       </div>
 
       <label for="password">Password</label>
-      <input type="password" id="password" class="form-control mb-2" placeholder="password" formControlName="password"/>
+      <input type="password" id="password" class="form-control mb-3" placeholder="password" formControlName="password"/>
       <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors">
         <small class="text-danger" *ngIf="registerForm.get('password')?.getError('required')">field required</small>
         <small class="text-danger" *ngIf="registerForm.get('password')?.getError('pattern')">Invalid password, must started with capital letter and contains numbers & letters</small>
       </div>
 
       <label for="rePassword">Confirm Password</label>
-      <input type="password" id="rePassword" class="form-control mb-2" placeholder="confirm password" formControlName="rePassword"/>
+      <input type="password" id="rePassword" class="form-control mb-3" placeholder="confirm password" formControlName="rePassword"/>
       <div *ngIf="registerForm.get('rePassword')?.touched && registerForm.get('rePassword')?.errors">
         <small class="text-danger" *ngIf="registerForm.get('rePassword')?.getError('required')">field required</small>
         <small class="text-danger" *ngIf="registerForm.get('rePassword')?.getError('pattern')">Invalid password, must started with capital letter and contains numbers & letters</small>
       </div>
 
       <label for="mobile_number">Mobile Number</label>
-      <input type="tel" id="mobile_number" class="form-control mb-2" placeholder="ex: 01028720750" formControlName="phone"/>
+      <input type="tel" id="mobile_number" class="form-control mb-3" placeholder="ex: 01028720750" formControlName="phone"/>
       <div *ngIf="registerForm.get('phone')?.touched && registerForm.get('phone')?.errors">
         <small class="text-danger" *ngIf="registerForm.get('phone')?.getError('required')">field required</small>
         <small class="text-danger" *ngIf="registerForm.get('phone')?.getError('pattern')">Invalid Egyptian phone number</small>
       </div>
 
-      <button [disabled]="registerForm.invalid" type="submit" class="button-submit d-block mx-auto">Sign up</button>
+      <button [disabled]="registerForm.invalid" type="submit" class="button-submit d-block mx-auto">
+        <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+        <span *ngIf="!isLoading">Sign up</span>
+      </button>
 
   </form>
 </div>

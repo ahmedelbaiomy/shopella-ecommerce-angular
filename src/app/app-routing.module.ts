@@ -8,6 +8,7 @@ import { BrandsComponent } from './brands/brands.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CartComponent } from './cart/cart.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'brands', component: BrandsComponent },
   { path: 'categories', component: CategoriesComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart',canActivate:[authGuard], component: CartComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

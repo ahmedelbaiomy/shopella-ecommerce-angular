@@ -40,11 +40,11 @@
             <img src="/assets/images/icons/account.svg" alt="My account">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="login">Login</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" routerLink="register">Register</a></li>
-            @if(false){
-              <li><span class="dropdown-item text-danger" >Logout</span></li>
+            <li *ngIf="!isLoggedIn"><a class="dropdown-item cursor-pointer" routerLink="login">Login</a></li>
+            <li *ngIf="!isLoggedIn"><hr class="dropdown-divider"></li>
+            <li *ngIf="!isLoggedIn"><a class="dropdown-item cursor-pointer" routerLink="register">Register</a></li>
+            @if(isLoggedIn){
+              <li><span class="dropdown-item text-danger cursor-pointer" (click)="onLogout()" >Logout</span></li>
             }
           </ul>
         </li>

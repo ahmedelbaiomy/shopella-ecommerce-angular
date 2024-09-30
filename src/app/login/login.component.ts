@@ -33,6 +33,8 @@ export class LoginComponent {
           if (res.message === 'success') {
             this.isLoading = false;
             this._toastr.toastrSuccess(res.message);
+            localStorage.setItem('userToken',res.token);
+            this._authService.decodeUserToken()
             this._Router.navigate(['/home']);
           }
         },

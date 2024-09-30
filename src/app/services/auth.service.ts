@@ -14,4 +14,9 @@ export class AuthService {
   {
     return this._httpClient.post('https://ecommerce.routemisr.com/api/v1/auth/signup',userData);
   }
+
+  login(userData:{email:string,password:string}):Observable<any>
+  {
+    return this._httpClient.post('https://ecommerce.routemisr.com/api/v1/auth/signin',userData);
+  }
 }

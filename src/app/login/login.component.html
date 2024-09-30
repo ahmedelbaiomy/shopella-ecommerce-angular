@@ -1,1 +1,15 @@
-<p>login works!</p>
+<div class="w-75 mx-auto py-4">
+  <h1>login</h1>
+  <form (ngSubmit)="onSubmit(loginForm)" [formGroup]="loginForm" class="my-4">
+    <label for="email">E-mail</label>
+    <input type="email" formControlName="email" id="email" class="form-control mb-3" placeholder="Enter your email"/>
+
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" id="password" class="form-control mb-3" placeholder="Enter your password"/>
+
+    <button type="submit" class="button-submit mt-2 d-block mx-auto">
+      <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+        <span *ngIf="!isLoading">Login</span>
+    </button>
+  </form>
+</div>

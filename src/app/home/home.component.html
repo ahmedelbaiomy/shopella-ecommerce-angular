@@ -1,1 +1,16 @@
-<p>home works!</p>
+<div class="row">
+  <div *ngIf="isLoading" class="col-md-12 my-5 d-flex justify-content-center align-items-center">
+    <div class="spinner-grow" role="status">
+    </div>
+    <div class="spinner-grow" role="status">
+    </div>
+    <div class="spinner-grow" role="status">
+    </div>
+  </div>
+
+  <ng-container *ngIf="!isLoading">
+    <div *ngFor="let product of products" class="col-md-2">
+      <app-card [product]="product"></app-card>
+    </div>
+  </ng-container>
+</div>

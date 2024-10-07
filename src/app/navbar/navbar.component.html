@@ -1,5 +1,5 @@
 <div class="text-center bg-black secondary-nav">
-  Sign up and get 20% off to your first order. <a href="">Sign Up Now</a>
+  Sign up and get 20% off to your first order. <a *ngIf="!isLoggedIn" routerLink="register">Sign Up Now</a>
   <div class="float-end close">
     <img src="/assets/images/icons/cross.svg" alt="close"/>
   </div>

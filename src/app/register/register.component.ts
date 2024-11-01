@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   constructor(private _authService:AuthService,private _Router:Router,private _toastr:ToasterService){
+    if(localStorage.getItem('userToken') !== null){
+      this._Router.navigate(['/home']);
+    }
   }
   isLoading:boolean=false;
   registerForm:FormGroup = new FormGroup({

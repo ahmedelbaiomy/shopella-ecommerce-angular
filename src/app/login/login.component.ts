@@ -14,7 +14,12 @@ export class LoginComponent {
     private _authService: AuthService,
     private _Router: Router,
     private _toastr: ToasterService
-  ) {}
+  ) {
+
+    if(localStorage.getItem('userToken') !== null){
+      this._Router.navigate(['/home']);
+    }
+  }
 
   isLoading: boolean = false;
   loginForm: FormGroup = new FormGroup({

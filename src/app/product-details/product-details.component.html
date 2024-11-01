@@ -1,0 +1,43 @@
+<div class="row py-4">
+  <div *ngIf="isLoading" class="col-md-12 my-5 d-flex justify-content-center align-items-center">
+    <div class="spinner-grow" role="status">
+    </div>
+    <div class="spinner-grow" role="status">
+    </div>
+    <div class="spinner-grow" role="status">
+    </div>
+  </div>
+
+  <ng-container *ngIf="!isLoading">
+  <div class="col-md-6 ">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let img of product.images">
+        <ng-template carouselSlide >
+          <img  [src]="img" [title]="product.title" >
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+
+  </div>
+  <div class="col-md-6 mt-2">
+    <h2 class="fw-bolder mb-2">{{product?.title}}</h2>
+    <p><i class="fas fa-star rating-color"></i> {{product.ratingsAverage}}</p>
+    <h4><span class="fw-bolder">{{product.price}} EGP</span></h4>
+    <p class="text-muted text-secondary">{{product?.description}}</p>
+    <div class="row align-items-center mt-5">
+      <div class="col-md-4 ">
+        <div class="counter">
+          <span [ngClass]="{'not-allowed': itemCount == 1}" (click)="itemCount = (itemCount - 1) < 1 ? 1 : itemCount -1">-</span>
+           <span>{{itemCount}}</span>
+          <span (click)="itemCount = itemCount +1">+</span>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <button class="btn w-100 text-white my-2"> <i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
+      </div>
+    </div>
+
+  </div>
+  </ng-container>
+</div>
+

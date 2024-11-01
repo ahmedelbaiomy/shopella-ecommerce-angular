@@ -13,4 +13,9 @@ export class ProductsService {
   {
     return this._HttpClient.get(`${this.apiUrl}/products`)
   }
+
+  getProductDetails(id:string):Observable<any>
+  {
+    return this._HttpClient.get(`${this.apiUrl}/products/${id}`);
+  }
 }

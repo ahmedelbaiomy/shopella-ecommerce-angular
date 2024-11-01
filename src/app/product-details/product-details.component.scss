@@ -1,0 +1,30 @@
+:host::ng-deep{
+  .counter{
+    background-color: #F0EEED;
+    border-radius: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &>input{
+      border: none !important;
+      background-color: #F0EEED;
+      &>::placeholder{
+        text-align: center !important;
+      }
+    }
+    &>span{
+      padding-right: 12px;
+      padding-left: 12px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+  }
+  .btn {
+    background-color: black;
+    border-radius: 25px;
+  }
+  .not-allowed{
+    cursor: not-allowed !important;
+  }
+}

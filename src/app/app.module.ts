@@ -18,6 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CardComponent } from './shared/components/card/card.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { RouterModule } from '@angular/router';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -33,7 +36,8 @@ import { CardComponent } from './shared/components/card/card.component';
     NavbarComponent,
     NotFoundComponent,
     RegisterComponent,
-    CardComponent
+    CardComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { CardComponent } from './shared/components/card/card.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    RouterModule,
+    CarouselModule,
+    ToastrModule.forRoot(),
 
   ],
   providers: [],

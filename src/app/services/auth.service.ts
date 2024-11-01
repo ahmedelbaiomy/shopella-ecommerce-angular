@@ -15,8 +15,10 @@ export class AuthService {
       this.decodeUserToken();
     }
   }
+
   apiUrl:string = 'https://ecommerce.routemisr.com/api/v1';
   userData = new BehaviorSubject(null);
+  
   register(userData:IUser):Observable<any>
   {
     return this._httpClient.post(`${this.apiUrl}/auth/signup`,userData);

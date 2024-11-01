@@ -8,6 +8,8 @@
     transition: transform 1s, opacity 1s;
     opacity: 0;
     transform: translateY(100%);
+    background-color: black;
+    border-radius: 0 !important;
   }
   .product:hover .btn {
     opacity: 1;

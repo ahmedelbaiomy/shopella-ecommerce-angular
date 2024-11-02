@@ -8,7 +8,16 @@
     </div>
   </div>
 
+
+
+
   <ng-container *ngIf="!isLoading">
+    <div class="my-4">
+      <app-main-slider></app-main-slider>
+    </div>
+    <div class="mb-4">
+      <app-categories-banner></app-categories-banner>
+    </div>
     <div *ngFor="let product of products" class="col-md-2">
       <app-card [product]="product"></app-card>
     </div>

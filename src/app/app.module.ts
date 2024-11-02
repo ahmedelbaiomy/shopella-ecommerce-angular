@@ -21,6 +21,8 @@ import { CardComponent } from './shared/components/card/card.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MainSliderComponent } from './shared/components/main-slider/main-slider.component';
+import { CategoriesBannerComponent } from './shared/components/categories-banner/categories-banner.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NotFoundComponent,
     RegisterComponent,
     CardComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    MainSliderComponent,
+    CategoriesBannerComponent
   ],
   imports: [
     BrowserModule,

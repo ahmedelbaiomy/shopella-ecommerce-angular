@@ -18,4 +18,9 @@ export class ProductsService {
   {
     return this._HttpClient.get(`${this.apiUrl}/products/${id}`);
   }
+
+  getCategories():Observable<any>
+  {
+    return this._HttpClient.get(`${this.apiUrl}/categories`);
+  }
 }

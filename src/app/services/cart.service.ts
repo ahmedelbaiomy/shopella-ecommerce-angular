@@ -35,6 +35,10 @@ export class CartService {
     return this._HttpClient.get(`${this.apiUrl}/cart`, { headers: this.headers});
   }
 
+  removeCartItem(id:string): Observable<any> {
+    return this._HttpClient.delete(`${this.apiUrl}/cart/${id}`, { headers: this.headers});
+  }
+
   refreshCartItemsCount(){
     this.getLoggedUserCart().subscribe({
       next: (res) => {

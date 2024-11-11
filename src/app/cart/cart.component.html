@@ -24,7 +24,7 @@
           <p class="fw-bolder mt-5">{{ item.price | currency: 'E£ ':'symbol':'1.0-2' }}</p>
         </div>
         <div class="col-md-3 cart-item-actions">
-          <button class="btn"><i class="fa fa-trash-can text-danger"></i> <span class="text-danger mx-1">Remove</span></button>
+          <button (click)="removeItem(item.product._id)" class="btn"><i class="fa fa-trash-can text-danger"></i> <span class="text-danger mx-1">Remove</span></button>
           <div class="counter w-75">
             <span class="px-2" [ngClass]="{'not-allowed': item.count == 1}" (click)="item.count = (item.count - 1) < 1 ? 1 : item.count -1">-</span>
              <span class="mx-1">{{item.count}}</span>

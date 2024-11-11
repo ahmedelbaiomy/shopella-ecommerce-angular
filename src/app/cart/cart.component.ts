@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { ToasterService } from '../services/toastr.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,7 @@ export class CartComponent implements OnInit{
   isLoading:boolean = false;
 
 
-  constructor(private _CartService:CartService){}
+  constructor(private _CartService:CartService,private _toastr:ToasterService){}
   ngOnInit(): void {
     this.isLoading = true;
     this._CartService.getLoggedUserCart().subscribe({
@@ -21,6 +22,17 @@ export class CartComponent implements OnInit{
         this.isLoading = false;
         // console.log(res)
       },
+    })
+  }
+
+  removeItem(id:string){
+    this._CartService.removeCartItem(id).subscribe({
+      next: (res) => {
+        this._toastr.toastrSuccess(res.data.message)
+        this.cartItems = res.data;
+        this._CartService.refreshCartItemsCount();
+      },
+      error: (err) => {this._toastr.toastrError(err.data.message)}
     })
   }
 }

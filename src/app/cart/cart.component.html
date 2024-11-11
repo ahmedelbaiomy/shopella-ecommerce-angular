@@ -1,1 +1,67 @@
-<p>cart works!</p>
+<h2 class="fw-bolder mt-5 mb-4">Cart</h2>
+
+<div class="cart row mb-5">
+  <div *ngIf="isLoading" class="col-md-12 my-5 d-flex justify-content-center align-items-center">
+    <div class="spinner-grow" role="status">
+    </div>
+    <div class="spinner-grow" role="status">
+    </div>
+    <div class="spinner-grow" role="status">
+    </div>
+  </div>
+
+    <div *ngIf="!isLoading" class="cart-items col-md-7">
+      <div class="row align-content-center cart-item" *ngFor="let item of cartItems.products;let last = last">
+        <div class="col-md-3">
+          <img [src]="item.product.imageCover" [alt]="item.product.title" width="150" height="150">
+        </div>
+        <div class="col-md-6">
+          <h4>{{item.product.title}}</h4>
+          <div>
+            <i class="fas fa-star rating-color"></i>
+            <span class="text-muted fw-bold font-sm">{{item.product.ratingsAverage}}</span>
+          </div>
+          <p class="fw-bolder mt-5">{{ item.price | currency: 'E£ ':'symbol':'1.0-2' }}</p>
+        </div>
+        <div class="col-md-3 cart-item-actions">
+          <button class="btn"><i class="fa fa-trash-can text-danger"></i> <span class="text-danger mx-1">Remove</span></button>
+          <div class="counter w-75">
+            <span class="px-2" [ngClass]="{'not-allowed': item.count == 1}" (click)="item.count = (item.count - 1) < 1 ? 1 : item.count -1">-</span>
+             <span class="mx-1">{{item.count}}</span>
+            <span class="px-2" (click)="item.count = item.count +1">+</span>
+          </div>
+        </div>
+        <hr *ngIf="!last" class="divider">
+      </div>
+    </div>
+
+
+    <div *ngIf="!isLoading" class="col-md-4 offset-md-1">
+      <div class="summary">
+        <div class="row">
+          <h4 class="fw-bolder mb-3">Order summary</h4>
+          <div class="col-md-12 d-flex justify-content-between mb-2">
+            <span>Total price</span>
+            <span>{{cartItems?.totalCartPrice | currency: 'E£ ':'symbol':'1.0-2'}} </span>
+          </div>
+          <div class="col-md-12 d-flex justify-content-between mb-2">
+            <span>Discount(0%)</span>
+            <span class="text-danger">{{0 | currency: 'E£ ':'symbol':'1.0-2'}} </span>
+          </div>
+          <div class="col-md-12 d-flex justify-content-between mb-2">
+            <span>Shipment cost</span>
+            <span>{{70 | currency: 'E£ ':'symbol':'1.0-2'}} </span>
+          </div>
+          <hr>
+          <div class="col-md-12 d-flex justify-content-between mb-2">
+            <span class="fw-bolder">Total</span>
+            <span class="fw-bolder">{{(cartItems?.totalCartPrice + 70) | currency: 'E£ ':'symbol':'1.0-2'}} </span>
+          </div>
+
+          <div class="col-md-12">
+            <button class="btn pay w-100 text-white my-2">Pay <i class="fa fa-arrow-right"></i> </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

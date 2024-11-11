@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit{
   isLoggedIn:boolean = false;
-  constructor(private _authService:AuthService){
+  numberOfCartItems:number = 0;
+  cartItemCount$ = this._CartService.cartItemCount$;
+  constructor(private _authService:AuthService,private _CartService:CartService){
   _authService.userData.subscribe({
     next: () => {
       if(_authService.userData.getValue() !== null){
@@ -21,9 +24,11 @@ export class NavbarComponent implements OnInit{
  }
 
  ngOnInit(){
-  this._authService.userData
+  this._authService.userData;
+  this._CartService.refreshCartItemsCount();
  }
  onLogout(){
   this._authService.logout();
  }
+
 }

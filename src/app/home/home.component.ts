@@ -30,4 +30,5 @@ export class HomeComponent implements OnInit {
       error: (err) => {this._toastr.toastrError(err.data.message)},
     })
   }
+
 }

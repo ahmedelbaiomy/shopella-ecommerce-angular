@@ -1,0 +1,54 @@
+:host::ng-deep
+{
+  .cart{
+    .cart-items{
+      border: 1px solid #dee2e6;
+      border-radius: 1rem;
+      padding: 30px;
+
+      .cart-item{
+        .counter{
+          background-color: #F0EEED;
+          border-radius: 25px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          &>input{
+            border: none !important;
+            background-color: #F0EEED;
+            &>::placeholder{
+              text-align: center !important;
+            }
+          }
+          &>span{
+            font-size: 25px;
+            cursor: pointer;
+          }
+        }
+
+        .cart-item-actions{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: end;
+        }
+
+        .divider{
+          margin-top: 15px;
+          margin-bottom: 15px;
+        }
+      }
+
+    }
+    .summary{
+      border: 1px solid #dee2e6;
+      border-radius: 1rem;
+      padding: 30px;
+      height: 40vh;
+      .pay{
+          background-color: black;
+          border-radius: 25px;
+      }
+    }
+  }
+}

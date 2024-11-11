@@ -35,4 +35,14 @@ export class CartComponent implements OnInit{
       error: (err) => {this._toastr.toastrError(err.data.message)}
     })
   }
+
+  updateItemQuantity(id:string,count:number){
+    this._CartService.updateCartItemQuantity(id,count).subscribe({
+      next:(res)=>{
+        this.cartItems = res.data
+        this._toastr.toastrSuccess(res.data.message);
+      },
+      error: (err) => {this._toastr.toastrError(err.data.message)}
+    })
+  }
 }

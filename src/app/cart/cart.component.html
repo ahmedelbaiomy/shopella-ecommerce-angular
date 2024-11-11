@@ -12,9 +12,14 @@
 
     <div *ngIf="!isLoading" class="cart-items col-md-7">
       <div class="row align-content-center cart-item" *ngFor="let item of cartItems.products;let last = last">
+
         <div class="col-md-3">
-          <img [src]="item.product.imageCover" [alt]="item.product.title" width="150" height="150">
+          <a [routerLink]="['/product-details',item.product._id]">
+            <img [src]="item.product.imageCover" [alt]="item.product.title" width="150" height="150">
+          </a>
         </div>
+
+
         <div class="col-md-6">
           <h4>{{item.product.title}}</h4>
           <div>
@@ -26,9 +31,9 @@
         <div class="col-md-3 cart-item-actions">
           <button (click)="removeItem(item.product._id)" class="btn"><i class="fa fa-trash-can text-danger"></i> <span class="text-danger mx-1">Remove</span></button>
           <div class="counter w-75">
-            <span class="px-2" [ngClass]="{'not-allowed': item.count == 1}" (click)="item.count = (item.count - 1) < 1 ? 1 : item.count -1">-</span>
+            <span class="px-2" (click)="(item.count - 1) < 1 ? removeItem(item.product._id) : updateItemQuantity(item.product._id,item.count-1)">-</span>
              <span class="mx-1">{{item.count}}</span>
-            <span class="px-2" (click)="item.count = item.count +1">+</span>
+            <span class="px-2" (click)="updateItemQuantity(item.product._id,item.count+1)">+</span>
           </div>
         </div>
         <hr *ngIf="!last" class="divider">

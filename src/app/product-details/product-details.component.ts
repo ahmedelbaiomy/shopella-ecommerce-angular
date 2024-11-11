@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ToasterService } from '../services/toastr.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -11,7 +13,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class ProductDetailsComponent implements OnInit {
   constructor(
     private _ActivatedRoute: ActivatedRoute,
-    private _ProductsService: ProductsService
+    private _ProductsService: ProductsService,
+    private _CartService:CartService,    private _toastr: ToasterService
   ) {}
   isLoading:boolean = false;
   productId!: string;
@@ -34,6 +37,7 @@ export class ProductDetailsComponent implements OnInit {
 
   customOptions: OwlOptions = {
     loop: true,
+    autoplay: true,
     mouseDrag: true,
     touchDrag: false,
     pullDrag: false,
@@ -46,5 +50,12 @@ export class ProductDetailsComponent implements OnInit {
       }
     },
     nav: true
+  }
+
+  AddToCart(id:string){
+    this._CartService.addToCart(id).subscribe({
+      next: (res) => {this._toastr.toastrSuccess(res.data.message)},
+      error: (err) => {this._toastr.toastrError(err.data.message)},
+    })
   }
 }

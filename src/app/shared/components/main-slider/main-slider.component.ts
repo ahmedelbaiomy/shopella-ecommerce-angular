@@ -10,11 +10,12 @@ export class MainSliderComponent {
 
   customOptions: OwlOptions = {
     loop: true,
+    autoplay: true,
     mouseDrag: true,
     touchDrag: false,
     pullDrag: false,
     dots: false,
-    navSpeed: 100,
+    navSpeed: 700,
     navText: [ '', '' ],
     responsive: {
       0: {

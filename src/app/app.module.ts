@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -23,6 +23,7 @@ import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MainSliderComponent } from './shared/components/main-slider/main-slider.component';
 import { CategoriesBannerComponent } from './shared/components/categories-banner/categories-banner.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CategoriesBannerComponent } from './shared/components/categories-banner
     CardComponent,
     ProductDetailsComponent,
     MainSliderComponent,
-    CategoriesBannerComponent
+    CategoriesBannerComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ import { CategoriesBannerComponent } from './shared/components/categories-banner
     BrowserAnimationsModule,
     RouterModule,
     CarouselModule,
+    FormsModule,
     ToastrModule.forRoot(),
 
   ],

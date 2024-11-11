@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit{
   isLoggedIn:boolean = false;
- constructor(private _authService:AuthService){
+  constructor(private _authService:AuthService){
   _authService.userData.subscribe({
     next: () => {
       if(_authService.userData.getValue() !== null){
@@ -23,7 +23,6 @@ export class NavbarComponent implements OnInit{
  ngOnInit(){
   this._authService.userData
  }
-
  onLogout(){
   this._authService.logout();
  }

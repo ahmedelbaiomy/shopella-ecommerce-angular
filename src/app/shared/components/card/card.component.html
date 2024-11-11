@@ -1,16 +1,16 @@
 <div class="product px-4 py-3 my-3">
   <a [routerLink]="['/product-details',product._id]">
   <img class="w-100" [src]="product.imageCover" />
-  <span class="text-success fw-bold font-sm">{{product.category.name}}</span>
+  <span class="text-success fw-bold font-sm">{{product.category.name | lowercase}}</span>
   <h4 class="h6 fw-bolder">{{product.title.split(' ').slice(0,2).join(' ')}}</h4>
   <div class="d-flex justify-content-between align-items-center">
-    <span class="text-muted fw-bold font-sm">{{product.price}} EGP</span>
+    <span class="text-muted fw-bold font-sm">{{ product.price | currency: 'E£ ':'symbol':'1.0-2' }}</span>
     <div>
       <i class="fas fa-star rating-color"></i>
       <span class="text-muted fw-bold font-sm">{{product.ratingsAverage}}</span>
     </div>
   </div>
 
-  <button class="btn w-100 text-white my-2"> <i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
 </a>
+<button (click)="onAddToCart()" class="btn w-100 text-white my-2"> <i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
 </div>

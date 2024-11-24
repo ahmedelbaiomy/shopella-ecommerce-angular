@@ -11,7 +11,8 @@
   </div>
 
     <div *ngIf="!isLoading" class="cart-items col-md-7">
-      <div class="row align-content-center cart-item" *ngFor="let item of cartItems.products;let last = last">
+      <ng-container *ngIf="cartItems.products?.length; else noItems">
+        <div class="row align-content-center cart-item" *ngFor="let item of cartItems.products;let last = last">
 
         <div class="col-md-3">
           <a [routerLink]="['/product-details',item.product._id]">
@@ -31,13 +32,21 @@
         <div class="col-md-3 cart-item-actions">
           <button (click)="removeItem(item.product._id)" class="btn"><i class="fa fa-trash-can text-danger"></i> <span class="text-danger mx-1">Remove</span></button>
           <div class="counter w-75">
-            <span class="px-2" (click)="(item.count - 1) < 1 ? removeItem(item.product._id) : updateItemQuantity(item.product._id,item.count-1)">-</span>
+            <span class="px-2" (click)="decrementItem(item)">-</span>
              <span class="mx-1">{{item.count}}</span>
             <span class="px-2" (click)="updateItemQuantity(item.product._id,item.count+1)">+</span>
           </div>
         </div>
         <hr *ngIf="!last" class="divider">
       </div>
+    </ng-container>
+
+      <ng-template #noItems>
+        <div class="row text-center align-content-center">
+          <p class="fw-bolder" style="font-size: 30px;">Cart is empty ...</p>
+        </div>
+      </ng-template>
+
     </div>
 
 
@@ -55,16 +64,16 @@
           </div>
           <div class="col-md-12 d-flex justify-content-between mb-2">
             <span>Shipment cost</span>
-            <span>{{70 | currency: 'E£ ':'symbol':'1.0-2'}} </span>
+            <span>{{cartItems?.totalCartPrice == 0 ? 0:Shipment | currency: 'E£ ':'symbol':'1.0-2'}} </span>
           </div>
           <hr>
           <div class="col-md-12 d-flex justify-content-between mb-2">
             <span class="fw-bolder">Total</span>
-            <span class="fw-bolder">{{(cartItems?.totalCartPrice + 70) | currency: 'E£ ':'symbol':'1.0-2'}} </span>
+            <span class="fw-bolder">{{(cartItems?.totalCartPrice == 0 ? 0: cartItems?.totalCartPrice + Shipment) | currency: 'E£ ':'symbol':'1.0-2'}} </span>
           </div>
 
-          <div class="col-md-12">
-            <button class="btn pay w-100 text-white my-2">Pay <i class="fa fa-arrow-right"></i> </button>
+          <div class="col-md-12"  [ngClass]="{ 'cursor-not-allowed': !(cartItems?.products?.length) }" >
+            <button class="btn pay w-100 text-white my-2" [disabled]="cartItems?.products.length ===0" >Checkout <i class="fa fa-arrow-right"></i> </button>
           </div>
         </div>
       </div>

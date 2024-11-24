@@ -25,6 +25,9 @@ body{
 .cursor-pointer{
   cursor: pointer !important;
 }
+.cursor-not-allowed{
+  cursor: not-allowed !important;
+}
 input{
   border-radius: 0 !important;
 }

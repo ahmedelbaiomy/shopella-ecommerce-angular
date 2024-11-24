@@ -11,7 +11,7 @@ export class CartComponent implements OnInit{
   itemCount:number = 1;
   cartItems:any=null;
   isLoading:boolean = false;
-
+  Shipment:number = 70;
 
   constructor(private _CartService:CartService,private _toastr:ToasterService){}
   ngOnInit(): void {
@@ -45,4 +45,13 @@ export class CartComponent implements OnInit{
       error: (err) => {this._toastr.toastrError(err.data.message)}
     })
   }
+
+  decrementItem(item: any) {
+    if (item.count - 1 < 1) {
+      this.removeItem(item.product._id);
+    } else {
+      this.updateItemQuantity(item.product._id, item.count - 1);
+    }
+  }
+
 }

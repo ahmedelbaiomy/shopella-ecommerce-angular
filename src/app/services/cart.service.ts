@@ -20,9 +20,6 @@ export class CartService {
       `${this.apiUrl}/cart`,
       {
         productId: id,
-      },
-      {
-        headers: this.headers,
       }
     ).pipe(
       tap(() => {
@@ -32,15 +29,15 @@ export class CartService {
   }
 
   getLoggedUserCart(): Observable<any> {
-    return this._HttpClient.get(`${this.apiUrl}/cart`, { headers: this.headers});
+    return this._HttpClient.get(`${this.apiUrl}/cart`);
   }
 
   removeCartItem(id:string): Observable<any> {
-    return this._HttpClient.delete(`${this.apiUrl}/cart/${id}`, { headers: this.headers});
+    return this._HttpClient.delete(`${this.apiUrl}/cart/${id}`);
   }
 
   updateCartItemQuantity(id:string,count:number): Observable<any> {
-    return this._HttpClient.put(`${this.apiUrl}/cart/${id}`,{count:count}, { headers: this.headers});
+    return this._HttpClient.put(`${this.apiUrl}/cart/${id}`,{count:count});
   }
 
   refreshCartItemsCount(){
@@ -53,8 +50,7 @@ export class CartService {
 
   onlinePayment(shippingAddress:any,cartId:string): Observable<any>{
     return this._HttpClient.post(`${this.apiUrl}/orders/checkout-session/${cartId}?url=http://localhost:4200`,
-    {shippingAddress:shippingAddress},
-    {headers:this.headers}
+    {shippingAddress:shippingAddress}
     );
   }
 }

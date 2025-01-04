@@ -14,7 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CardComponent } from './shared/components/card/card.component';
@@ -25,6 +25,7 @@ import { MainSliderComponent } from './shared/components/main-slider/main-slider
 import { CategoriesBannerComponent } from './shared/components/categories-banner/categories-banner.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { HeadersInterceptor } from './headers.interceptor';
 
 
 @NgModule({
@@ -59,7 +60,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ToastrModule.forRoot(),
 
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withInterceptors([HeadersInterceptor])),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

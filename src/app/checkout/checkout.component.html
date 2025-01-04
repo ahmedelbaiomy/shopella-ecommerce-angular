@@ -1,0 +1,18 @@
+<div class="form-wrap mx-auto py-4">
+  <h1>Checkout</h1>
+  <form (ngSubmit)="onSubmit(shippingAddress)" [formGroup]="shippingAddress" class="my-4">
+    <label for="details">Address</label>
+    <input type="text" formControlName="details" id="details" class="form-control mb-3" placeholder="Enter your address"/>
+
+    <label for="city">City</label>
+    <input type="text" formControlName="city" id="city" class="form-control mb-3" placeholder="Enter your city"/>
+
+    <label for="phone">Phone</label>
+    <input type="tel" formControlName="phone" id="phone" class="form-control mb-3" placeholder="Enter your phone"/>
+
+    <button type="submit" class="button-submit mt-2 d-block mx-auto">
+      <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+        <span *ngIf="!isLoading">pay</span>
+    </button>
+  </form>
+</div>

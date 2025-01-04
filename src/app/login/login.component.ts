@@ -15,8 +15,7 @@ export class LoginComponent {
     private _Router: Router,
     private _toastr: ToasterService
   ) {
-
-    if(localStorage.getItem('userToken') !== null){
+    if (localStorage.getItem('userToken') !== null) {
       this._Router.navigate(['/home']);
     }
   }
@@ -26,7 +25,7 @@ export class LoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[A-Z][a-z0-9]{6,18}$/),
+      Validators.pattern(/^[A-Z][A-Za-z0-9@$!%*?&]{6,18}$/),
     ]),
   });
 
@@ -38,8 +37,8 @@ export class LoginComponent {
           if (res.message === 'success') {
             this.isLoading = false;
             this._toastr.toastrSuccess(res.message);
-            localStorage.setItem('userToken',res.token);
-            this._authService.decodeUserToken()
+            localStorage.setItem('userToken', res.token);
+            this._authService.decodeUserToken();
             this._Router.navigate(['/home']);
           }
         },
@@ -48,6 +47,8 @@ export class LoginComponent {
           this._toastr.toastrError(err.error.message);
         },
       });
+    }else{
+      this._toastr.toastrError('Invalid form data');
     }
   }
 }

@@ -50,4 +50,11 @@ export class CartService {
       }
     })
   }
+
+  onlinePayment(shippingAddress:any,cartId:string): Observable<any>{
+    return this._HttpClient.post(`${this.apiUrl}/orders/checkout-session/${cartId}?url=http://localhost:4200`,
+    {shippingAddress:shippingAddress},
+    {headers:this.headers}
+    );
+  }
 }

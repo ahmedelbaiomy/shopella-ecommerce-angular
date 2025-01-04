@@ -19,8 +19,8 @@ export class RegisterComponent {
   registerForm:FormGroup = new FormGroup({
     name: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(15)]),
     email: new FormControl('',[Validators.required,Validators.email]),
-    password: new FormControl('',[Validators.required,Validators.pattern(/^[A-Z][a-z0-9]{6,18}$/)]),
-    rePassword: new FormControl('',[Validators.required,Validators.pattern(/^[A-Z][a-z0-9]{6,18}$/)]),
+    password: new FormControl('',[Validators.required,Validators.pattern(/^[A-Z][A-Za-z0-9@$!%*?&]{6,18}$/)]),
+    rePassword: new FormControl('',[Validators.required,Validators.pattern(/^[A-Z][A-Za-z0-9@$!%*?&]{6,18}$/)]),
     phone: new FormControl('',[Validators.required,Validators.pattern(/^01[0125][0-9]{8}$/)])
   })
 
@@ -40,6 +40,8 @@ export class RegisterComponent {
           this._toastr.toastrError(err.error.message)
         }
       })
+    }else{
+      this._toastr.toastrError('Invalid form data');
     }
   }
 }

@@ -73,7 +73,7 @@
           </div>
 
           <div class="col-md-12"  [ngClass]="{ 'cursor-not-allowed': !(cartItems?.products?.length) }" >
-            <button class="btn pay w-100 text-white my-2" [disabled]="cartItems?.products.length ===0" >Checkout <i class="fa fa-arrow-right"></i> </button>
+            <button class="btn pay w-100 text-white my-2" [disabled]="cartItems?.products.length ===0" [routerLink]="['/checkout',cartItems?._id]" >Checkout <i class="fa fa-arrow-right"></i> </button>
           </div>
         </div>
       </div>

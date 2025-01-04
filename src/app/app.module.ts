@@ -24,6 +24,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MainSliderComponent } from './shared/components/main-slider/main-slider.component';
 import { CategoriesBannerComponent } from './shared/components/categories-banner/categories-banner.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SearchPipe } from './pipes/search.pipe';
     ProductDetailsComponent,
     MainSliderComponent,
     CategoriesBannerComponent,
-    SearchPipe
+    SearchPipe,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

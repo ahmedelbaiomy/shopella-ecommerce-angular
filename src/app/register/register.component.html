@@ -28,6 +28,7 @@
       <input type="password" id="rePassword" class="form-control mb-3" placeholder="confirm password" formControlName="rePassword"/>
       <div *ngIf="registerForm.get('rePassword')?.touched && registerForm.get('rePassword')?.errors">
         <small class="text-danger" *ngIf="registerForm.get('rePassword')?.getError('required')">field required</small>
+        <small class="text-danger" *ngIf="registerForm.get('rePassword')?.getError('mismatch')">{{registerForm.get('rePassword')?.getError('mismatch')}}</small>
         <small class="text-danger" *ngIf="registerForm.get('rePassword')?.getError('pattern')">Invalid password, must started with capital letter and contains numbers & letters</small>
       </div>
 

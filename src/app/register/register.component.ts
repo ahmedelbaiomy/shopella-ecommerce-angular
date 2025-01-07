@@ -22,8 +22,19 @@ export class RegisterComponent {
     password: new FormControl('',[Validators.required,Validators.pattern(/^[A-Z][A-Za-z0-9@$!%*?&]{6,18}$/)]),
     rePassword: new FormControl('',[Validators.required,Validators.pattern(/^[A-Z][A-Za-z0-9@$!%*?&]{6,18}$/)]),
     phone: new FormControl('',[Validators.required,Validators.pattern(/^01[0125][0-9]{8}$/)])
+  },{
+    validators: [this.passwordMatchValidator]
   })
 
+  passwordMatchValidator(registerForm:any){
+    let passwordControl = registerForm.get('password');
+    let rePasswordControl = registerForm.get('rePassword');
+    if(passwordControl.value !== rePasswordControl.value){
+      rePasswordControl.setErrors({ mismatch: 'password and confirm-password does not match' });
+      return {mismatch : 'password and confirm-password does not match' };
+    }
+    return null;
+  }
   onSubmit(form:FormGroup){
     if(form.valid){
       this.isLoading=true;

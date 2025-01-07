@@ -29,12 +29,10 @@ export class CheckoutComponent {
         this.isLoading=true;
         this._cartService.onlinePayment(form.value,this.cartId!).subscribe({
           next: (res) => {
-            console.log(res);
             this.isLoading = false;
             this.navigateToPage(res.session.url);
           },
           error: (err) => {
-            console.error(err);
             this.isLoading = false;
             this._toastr.toastrError('Payment failed. Please try again.');
           },

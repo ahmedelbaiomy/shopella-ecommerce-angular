@@ -24,17 +24,24 @@ export class CategoriesBannerComponent implements OnInit {
     loop: true,
     autoplay: true,
     mouseDrag: true,
-    touchDrag: false,
-    pullDrag: false,
+    touchDrag: true,
+    pullDrag: true,
     dots: false,
     navSpeed: 700,
-    navText: [ '', '' ],
+    navText: ['', ''],
     responsive: {
       0: {
-        items: 6
+        items: 3 // Small screens: Show 3 items
+      },
+      768: {
+        items: 4 // Medium screens: Show 4 items
+      },
+      1024: {
+        items: 6 // Large screens: Show 6 items
       }
     },
     nav: true
-  }
+  };
+
 
 }

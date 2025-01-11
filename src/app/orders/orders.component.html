@@ -18,20 +18,19 @@
           <thead>
             <tr>
               <th>Order ID</th>
-              <th>Order Date</th>
               <th>Payment Method</th>
               <th>Order Status</th>
               <th>Order Tax</th>
               <th>Order Shipping</th>
               <th>Order Total</th>
-              <th>Actions</th>
+              <th>Order Date</th>
+              <th>View</th>
             </tr>
           </thead>
           <tbody>
             <!-- Loop through sortedOrders -->
             <tr *ngFor="let order of sortedOrders">
               <td>{{ order.id }}</td>
-              <td>{{ order.createdAt | date }}</td>
               <td>{{ order.paymentMethodType }}</td>
               <td>
                 <span class="badge" [ngClass]="order.isPaid ? 'bg-success' : 'bg-danger'">
@@ -40,8 +39,9 @@
               </td>
               <td>{{ order.taxPrice }}</td>
               <td>{{ order.shippingPrice }}</td>
-              <td>{{ order.totalOrderPrice }}</td>
-              <th class="cursor-pointer"><i class="fa fa-eye"></i></th>
+              <td>{{ order.totalOrderPrice |  currency: 'E£ ':'symbol':'1.0-2' }}</td>
+              <td>{{ order.createdAt | date }}</td>
+              <th class="cursor-pointer" (click)="viewOrderDetails(order)"><i class="fa fa-eye"></i></th>
             </tr>
           </tbody>
         </table>

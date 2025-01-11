@@ -1,0 +1,86 @@
+<h2 class="fw-bolder mt-5 mb-4">Order details</h2>
+
+<div class="cart row mb-5">
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="col-12 my-5 d-flex justify-content-center align-items-center">
+    <div class="spinner-grow mx-1" role="status"></div>
+    <div class="spinner-grow mx-1" role="status"></div>
+    <div class="spinner-grow mx-1" role="status"></div>
+  </div>
+
+  <!-- Cart Items -->
+  <div *ngIf="!isLoading" class="cart-items col-md-7 col-sm-12 mb-4">
+    <ng-container *ngIf="order.cartItems?.length;">
+      <div
+        class="row align-content-center cart-item mb-3 py-2"
+        *ngFor="let item of order.cartItems; let last = last"
+      >
+        <div class="col-md-3 col-sm-4 mb-3">
+          <a [routerLink]="['/product-details', item.product._id]">
+            <img
+              [src]="item.product.imageCover"
+              [alt]="item.product.title"
+              class="img-fluid rounded"
+            />
+          </a>
+        </div>
+        <div class="col-md-6 col-sm-8">
+          <h4 class="text-truncate">{{ item.product.title }}</h4>
+          <div>
+            <i class="fas fa-star rating-color"></i>
+            <span class="text-muted fw-bold font-sm">{{ item.product.ratingsAverage }}</span>
+          </div>
+          <p class="fw-bolder mt-3">{{ item.price | currency: 'E£ ':'symbol':'1.0-2' }}</p>
+        </div>
+        <div class="col-md-3 cart-item-actions"></div>
+        <hr *ngIf="!last" class="divider w-100">
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Order Summary -->
+  <div *ngIf="!isLoading" class="col-md-4 col-sm-12 mb-4">
+    <div class="summary p-3 border rounded">
+      <h4 class="fw-bolder mb-3">Order summary</h4>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-between mb-2">
+          <span>Order ID</span>
+          <span># {{ order?.id }}</span>
+        </div>
+        <div class="col-12 d-flex justify-content-between mb-2">
+          <span>Order Status</span>
+          <span class="badge" [ngClass]="order.isPaid ? 'bg-success' : 'bg-danger'">
+            {{ order.isPaid ? 'Paid' : 'Unpaid' }}
+          </span>
+        </div>
+        <div class="col-12 d-flex justify-content-between mb-2">
+          <span>Order Paid At</span>
+          <span>{{ order.paidAt | date }}</span>
+        </div>
+        <div class="col-12 d-flex justify-content-between mb-2">
+          <span>Shipment Address</span>
+          <span class="text-wrap">
+            {{ order.shippingAddress.details }}, {{ order.shippingAddress.city }}
+          </span>
+        </div>
+        <div class="col-12 d-flex justify-content-between mb-2">
+          <span>Phone</span>
+          <span>{{ order.shippingAddress.phone }}</span>
+        </div>
+        <div class="col-12 d-flex justify-content-between mb-2">
+          <span>Tax</span>
+          <span>{{ order?.taxPrice | currency: 'E£ ':'symbol':'1.0-2' }}</span>
+        </div>
+        <div class="col-12 d-flex justify-content-between mb-2">
+          <span>Shipment cost</span>
+          <span>{{ order?.shippingPrice | currency: 'E£ ':'symbol':'1.0-2' }}</span>
+        </div>
+        <hr>
+        <div class="col-12 d-flex justify-content-between mb-2">
+          <span class="fw-bolder">Total price</span>
+          <span class="fw-bolder">{{ order?.totalOrderPrice | currency: 'E£ ':'symbol':'1.0-2' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

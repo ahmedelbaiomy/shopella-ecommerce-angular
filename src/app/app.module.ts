@@ -27,6 +27,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { HeadersInterceptor } from './headers.interceptor';
 import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { OrdersComponent } from './orders/orders.component';
     CategoriesBannerComponent,
     SearchPipe,
     CheckoutComponent,
-    OrdersComponent
+    OrdersComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { OrderService } from '../services/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -15,7 +16,8 @@ export class OrdersComponent implements OnInit {
 
   constructor(
     private _authService: AuthService,
-    private _OrderService: OrderService
+    private _OrderService: OrderService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +31,6 @@ export class OrdersComponent implements OnInit {
     this._OrderService.getLoggedUserOrders(this.userId).subscribe({
       next: (res) => {
         this.orders = res;
-
         this.sortedOrders = this.orders.sort(
           (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
@@ -41,5 +42,9 @@ export class OrdersComponent implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+
+  viewOrderDetails(order:any){
+    this._router.navigate(['/order-details'], { state: { order } });
   }
 }

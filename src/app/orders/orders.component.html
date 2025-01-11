@@ -1,0 +1,57 @@
+<h2 class="fw-bolder mt-5 mb-4">My Orders</h2>
+
+<div class="cart row mb-5">
+  <div *ngIf="isLoading" class="col-md-12 my-5 d-flex justify-content-center align-items-center">
+    <div class="spinner-grow" role="status">
+    </div>
+    <div class="spinner-grow" role="status">
+    </div>
+    <div class="spinner-grow" role="status">
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading" class="cart-items col-md-12">
+    <ng-container *ngIf="sortedOrders?.length; else noItems">
+      <!-- Add table-responsive class for responsiveness -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Order Date</th>
+              <th>Payment Method</th>
+              <th>Order Status</th>
+              <th>Order Tax</th>
+              <th>Order Shipping</th>
+              <th>Order Total</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Loop through sortedOrders -->
+            <tr *ngFor="let order of sortedOrders">
+              <td>{{ order.id }}</td>
+              <td>{{ order.createdAt | date }}</td>
+              <td>{{ order.paymentMethodType }}</td>
+              <td>
+                <span class="badge" [ngClass]="order.isPaid ? 'bg-success' : 'bg-danger'">
+                  {{ order.isPaid ? 'Paid' : 'Unpaid' }}
+                </span>
+              </td>
+              <td>{{ order.taxPrice }}</td>
+              <td>{{ order.shippingPrice }}</td>
+              <td>{{ order.totalOrderPrice }}</td>
+              <th class="cursor-pointer"><i class="fa fa-eye"></i></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+    <ng-template #noItems>
+      <div class="row text-center align-content-center">
+        <p class="fw-bolder" style="font-size: 30px;">There Are No Orders Yet.</p>
+      </div>
+    </ng-template>
+  </div>
+
+</div>

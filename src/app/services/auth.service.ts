@@ -18,7 +18,7 @@ export class AuthService {
 
   apiUrl:string = 'https://ecommerce.routemisr.com/api/v1';
   userData = new BehaviorSubject(null);
-  
+  userId:string | null = null;
   register(userData:IUser):Observable<any>
   {
     return this._httpClient.post(`${this.apiUrl}/auth/signup`,userData);
@@ -34,6 +34,7 @@ export class AuthService {
     if(encodedToken){
       let decodedToken:any =JSON.stringify(jwtDecode(encodedToken));
       this.userData.next(decodedToken)
+      this.userId =JSON.parse(decodedToken).id
     }
   }
   logout(): void {

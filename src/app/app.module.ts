@@ -26,6 +26,7 @@ import { CategoriesBannerComponent } from './shared/components/categories-banner
 import { SearchPipe } from './pipes/search.pipe';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { HeadersInterceptor } from './headers.interceptor';
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { HeadersInterceptor } from './headers.interceptor';
     MainSliderComponent,
     CategoriesBannerComponent,
     SearchPipe,
-    CheckoutComponent
+    CheckoutComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

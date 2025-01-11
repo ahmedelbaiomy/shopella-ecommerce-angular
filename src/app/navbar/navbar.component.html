@@ -45,6 +45,7 @@
             <li *ngIf="!isLoggedIn"><hr class="dropdown-divider"></li>
             <li *ngIf="!isLoggedIn"><a class="dropdown-item cursor-pointer" routerLink="register">Register</a></li>
             @if(isLoggedIn){
+              <li><span class="dropdown-item cursor-pointer" routerLink="/orders"> My Orders</span></li>
               <li><span class="dropdown-item text-danger cursor-pointer" (click)="onLogout()" >Logout</span></li>
             }
           </ul>

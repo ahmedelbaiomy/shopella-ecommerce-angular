@@ -1,8 +1,7 @@
-![image](https://github.com/user-attachments/assets/c1d486b9-3af2-4029-b1c0-17dae1d49a7b)# Shopella - E-Commerce App
+![image](https://github.com/user-attachments/assets/15d19558-7e50-4b0c-90f7-e3b6919d852a)# Shopella - E-Commerce App
 
-![Shopella Logo](![image](https://github.com/user-attachments/assets/5b379d30-a163-41fe-a7e6-16e24e5ebb78)
-)  
-*Your one-stop destination for seamless online shopping!*
+![image](https://github.com/user-attachments/assets/dd0ed9b4-c411-4fcf-bff4-1c6a2e4ffbba)
+
 
 ---
 
@@ -70,15 +69,16 @@ You can access the live version of Shopella here:
 ## Screenshots
 
 ### Home Page  
-![Home Page]![Uploading image.png…]
+![image](https://github.com/user-attachments/assets/7db508b9-cfee-458f-a216-ddf403cda927)
 
 ### Product Details  
-![Product Details](./src/assets/images/screenshots/product-details.png)
+![image](https://github.com/user-attachments/assets/747c256f-b950-4b74-8f90-9943e715d66b)
 
 ### Shopping Cart  
-![Shopping Cart](./src/assets/images/screenshots/cart.png)
+![image](https://github.com/user-attachments/assets/1e1b4122-4b21-4ea1-a045-ef3c9bd7bad4)
+
 
 ### Checkout  
-![Checkout](./src/assets/images/screenshots/checkout.png)
+![image](https://github.com/user-attachments/assets/1ac62154-2daa-42b0-96a4-2d722e5fa919)
 
 

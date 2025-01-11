@@ -1,27 +1,84 @@
-# Shopella
+![image](https://github.com/user-attachments/assets/c1d486b9-3af2-4029-b1c0-17dae1d49a7b)# Shopella - E-Commerce App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
+![Shopella Logo](![image](https://github.com/user-attachments/assets/5b379d30-a163-41fe-a7e6-16e24e5ebb78)
+)  
+*Your one-stop destination for seamless online shopping!*
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Installation](#installation)
+5. [Screenshots](#screenshots)
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Introduction
 
-## Build
+**Shopella** is a modern e-commerce web application built using **Angular**. It provides users with a seamless shopping experience, featuring product browsing, search, cart management, and secure checkout. Shopella is designed to be responsive, user-friendly, and scalable.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **User Authentication**: Sign up, log in, and manage your profile.
+- **Product Catalog**: Browse products by category, search, and filter.
+- **Shopping Cart**: Add, remove, and update items in your cart.
+- **Checkout**: Secure payment gateway integration for smooth transactions.
+- **Order History**: View your past orders and track their status.
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices.
+- **Online Payment**: Integration online payment with Stripe.
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Technologies Used
 
-## Further help
+- **Frontend**: Angular, TypeScript, HTML5, SCSS
+- **Backend**: Nodejs.
+- **Authentication**: JWT 
+- **Payment Gateway**: Stripe
+- **Deployment**: Vercel
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+## Installation
+Follow these steps to set up Shopella locally:
+
+
+1.  **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/shopella.git
+   cd shopella
+```
+2. **Install Dependencies**:
+   ```bash
+    npm install
+    ```
+3.  **Run Project**:
+  ```bash
+  ng serve
+```
+---
+## Deployment
+
+You can access the live version of Shopella here:  
+[Shopella Live](https://shopella-ecommerce-angular.vercel.app/)
+
+---
+## Screenshots
+
+### Home Page  
+![Home Page]![Uploading image.png…]
+
+### Product Details  
+![Product Details](./src/assets/images/screenshots/product-details.png)
+
+### Shopping Cart  
+![Shopping Cart](./src/assets/images/screenshots/cart.png)
+
+### Checkout  
+![Checkout](./src/assets/images/screenshots/checkout.png)
+
+
